@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+        #userList {
+            width: 60%;
+            margin: 20px auto;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        #userList ul {
+            list-style: none;
+            padding: 0;
+        }
+        #userList li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form {
+            width: 60%;
+            margin: 20px auto;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+        form button:hover {
+            background-color: #1f78b4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <div id="userList">
+        <ul id="users">
+            <!-- Aquí se mostrarán los usuarios -->
+        </ul>
+    </div>
+    <form id="userForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <script>
+        // Selecciona elementos del DOM
+        const form = document.getElementById('userForm');
+        const userList = document.getElementById('users');
+
+        // Escucha el evento de envío del formulario
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evita el comportamiento por defecto
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Crea un nuevo elemento de lista con los datos del usuario
+            const newUser = document.createElement('li');
+            newUser.textContent = `Nombre: ${name} | Correo: ${email}`;
+            
+            // Agrega el nuevo usuario a la lista
+            userList.appendChild(newUser);
+
+            // Limpia los campos del formulario
+            form.reset();
+        });
+    </script>
+</body>
+</html>
+
